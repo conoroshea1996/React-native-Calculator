@@ -10,7 +10,9 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Button
+  Text,
+  Button,
+  SafeAreaView
 } from 'react-native';
 
 import {
@@ -23,54 +25,74 @@ import {
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.result}></View>
-      <View style={styles.calculation} ></View>
-      <View style={styles.buttons} >
-        <View style={styles.numbers}>
-          <View style={styles.rows} >
-            <Button title='1' />
-            <Button title='1' />
-            <Button title='1' />
-          </View>
-          <View style={styles.rows} >
-            <Button title='1' />
-            <Button title='1' />
-            <Button title='1' />
-          </View>
-          <View style={styles.rows} >
-            <Button title='1' />
-            <Button title='1' />
-            <Button title='1' />
-          </View>
-          <View style={styles.rows} >
-            <Button title='1' />
-            <Button title='1' />
-            <Button title='1' />
-          </View>
+    <SafeAreaView style={styles.container} >
+      <View style={styles.container}>
+        <View style={styles.result}>
+          <Text style={styles.resultText}>400</Text>
         </View>
-        <View style={styles.operations}>
-          <Button title='+' />
-          <Button title='-' />
-          <Button title='*' />
-          <Button title='/' />
+        <View style={styles.calculation} >
+          <Text style={styles.calculationText}>200 + 200</Text>
+        </View>
+        <View style={styles.buttons} >
+          <View style={styles.numbers}>
+            <View style={styles.rows} >
+              <Button title='1' />
+              <Button title='1' />
+              <Button title='1' />
+            </View>
+            <View style={styles.rows} >
+              <Button title='1' />
+              <Button title='1' />
+              <Button title='1' />
+            </View>
+            <View style={styles.rows} >
+              <Button title='1' />
+              <Button title='1' />
+              <Button title='1' />
+            </View>
+            <View style={styles.rows} >
+              <Button title='1' />
+              <Button title='1' />
+              <Button title='1' />
+            </View>
+          </View>
+          <View style={styles.operations}>
+            <Button title='+' />
+            <Button title='-' />
+            <Button title='*' />
+            <Button title='/' />
+          </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   result: {
     flex: 2,
-    backgroundColor: 'pink'
+    backgroundColor: 'pink',
+    alignItems: 'flex-end',
+    paddingHorizontal: 10,
+  },
+  resultText: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: 'bold'
   },
   calculation: {
     flex: 1,
-    backgroundColor: 'green'
+    backgroundColor: 'green',
+    alignItems: 'flex-end',
+    paddingHorizontal: 10
+  },
+  calculationText: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: 'bold'
   },
   buttons: {
     flex: 6,
