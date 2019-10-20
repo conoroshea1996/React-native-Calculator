@@ -10,8 +10,7 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  StatusBar,
+  Button
 } from 'react-native';
 
 import {
@@ -22,14 +21,40 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.result}></View>
       <View style={styles.calculation} ></View>
       <View style={styles.buttons} >
-        <View style={styles.numbers}></View>
-        <View style={styles.operations}></View>
+        <View style={styles.numbers}>
+          <View style={styles.rows} >
+            <Button title='1' />
+            <Button title='1' />
+            <Button title='1' />
+          </View>
+          <View style={styles.rows} >
+            <Button title='1' />
+            <Button title='1' />
+            <Button title='1' />
+          </View>
+          <View style={styles.rows} >
+            <Button title='1' />
+            <Button title='1' />
+            <Button title='1' />
+          </View>
+          <View style={styles.rows} >
+            <Button title='1' />
+            <Button title='1' />
+            <Button title='1' />
+          </View>
+        </View>
+        <View style={styles.operations}>
+          <Button title='+' />
+          <Button title='-' />
+          <Button title='*' />
+          <Button title='/' />
+        </View>
       </View>
     </View>
   );
@@ -49,7 +74,15 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flex: 6,
-    flexDirection: 'row'
+    flexDirection: 'row',
+  },
+  rows: {
+    flexDirection: 'row',
+    flex: 1,
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    justifyContent: 'space-around',
+    alignItems: "center"
   },
   numbers: {
     flex: 3,
@@ -57,7 +90,8 @@ const styles = StyleSheet.create({
   },
   operations: {
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    justifyContent: 'space-around',
   }
 });
 
