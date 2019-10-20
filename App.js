@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  resukt: {
+  result: {
     flex: 2,
     backgroundColor: 'pink'
   },
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'green'
   },
   buttons: {
-    flex: 1,
+    flex: 6,
     flexDirection: 'row'
   },
   numbers: {
