@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -23,80 +23,64 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { setState } from 'expect/build/jestMatchersObject';
 
-const App = () => {
-  return (
-    <SafeAreaView style={styles.container} >
-      <View style={styles.container}>
-        <View style={styles.result}>
-          <Text style={styles.resultText}>400</Text>
-        </View>
-        <View style={styles.calculation} >
-          <Text style={styles.calculationText}>200 + 200</Text>
-        </View>
-        <View style={styles.buttons} >
-          <View style={styles.numbers}>
-            <View style={styles.rows} >
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
+buttonPressed = (text) => {
+}
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      resultText: ''
+    }
+  }
+  render() {
+    const rows = []
+    const nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.', 0, '=']]
+    for (let i = 0; i < 4; i++) {
+      let row = []
+      for (let j = 0; j < 3; j++) {
+        row.push(
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.calculationText}>{nums[i][j]}</Text>
+          </TouchableOpacity>)
+      }
+      rows.push(
+        <View style={styles.rows}>
+          {row}
+        </View>)
+    }
+    const operators = ['+', '-', '*', '/'];
+    let operatorBtn = [];
+    for (let i = 0; i < operators.length; i++) {
+      operatorBtn.push(
+        <TouchableOpacity style={styles.btn}>
+          <Text style={styles.calculationText} >{operators[i]}</Text>
+        </TouchableOpacity>)
+    }
+
+    return (
+      <SafeAreaView style={styles.container} >
+        <View style={styles.container}>
+          <View style={styles.result}>
+            <Text style={styles.resultText}>{this.state.resultText}</Text>
+          </View>
+          <View style={styles.calculation} >
+            <Text style={styles.calculationText}>200 + 200</Text>
+          </View>
+          <View style={styles.buttons} >
+            <View style={styles.numbers}>
+              {rows}
             </View>
-            <View style={styles.rows} >
-              <TouchableOpacity style={styles.btn} >
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.rows} >
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.rows} >
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.btn}>
-                <Text>0</Text>
-              </TouchableOpacity>
+            <View style={styles.operations}>
+              {operatorBtn}
             </View>
           </View>
-          <View style={styles.operations}>
-            <TouchableOpacity style={styles.btn}>
-              <Text>0</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btn}>
-              <Text>0</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btn}>
-              <Text>0</Text>
-            </TouchableOpacity>
-          </View>
         </View>
-      </View>
-    </SafeAreaView>
-  );
-};
+      </SafeAreaView>
+    );
+  };
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -112,8 +96,9 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 3,
-    borderColor: 'blue',
+    borderWidth: 0.2,
+    borderColor: '#BEBEBE',
+    borderBottomWidth: 0,
     flex: 1
   },
   resultText: {
@@ -139,8 +124,6 @@ const styles = StyleSheet.create({
   rows: {
     flexDirection: 'row',
     flex: 1,
-    borderBottomColor: 'black',
-    borderBottomWidth: 2,
     justifyContent: 'space-around',
     alignItems: "center"
   },
@@ -154,5 +137,3 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   }
 });
-
-export default App;
