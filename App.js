@@ -12,6 +12,7 @@ import {
   View,
   Text,
   Button,
+  TouchableOpacity,
   SafeAreaView
 } from 'react-native';
 
@@ -36,31 +37,60 @@ const App = () => {
         <View style={styles.buttons} >
           <View style={styles.numbers}>
             <View style={styles.rows} >
-              <Button title='1' />
-              <Button title='1' />
-              <Button title='1' />
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.rows} >
-              <Button title='1' />
-              <Button title='1' />
-              <Button title='1' />
+              <TouchableOpacity style={styles.btn} >
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.rows} >
-              <Button title='1' />
-              <Button title='1' />
-              <Button title='1' />
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.rows} >
-              <Button title='1' />
-              <Button title='1' />
-              <Button title='1' />
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn}>
+                <Text>0</Text>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.operations}>
-            <Button title='+' />
-            <Button title='-' />
-            <Button title='*' />
-            <Button title='/' />
+            <TouchableOpacity style={styles.btn}>
+              <Text>0</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn}>
+              <Text>0</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn}>
+              <Text>0</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -77,6 +107,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
     alignItems: 'flex-end',
     paddingHorizontal: 10,
+  },
+  btn: {
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 3,
+    borderColor: 'blue',
+    flex: 1
   },
   resultText: {
     color: 'white',
