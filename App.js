@@ -32,10 +32,21 @@ export default class App extends Component {
     super();
     this.state = {
       resultText: '',
+      calculationText: ''
     }
+    this.operators = ['D', '+', '-', '*', '/'];
+  }
+  calculateResult = () => {
+    this.setState({
+      calculationText: eval(this.state.resultText)
+    })
   }
   buttonPressed = (text) => {
-    this.setState({ resultText: this.state.resultText + text })
+    if (text === '=') {
+      this.calculateResult()
+    } else {
+      this.setState({ resultText: this.state.resultText + text })
+    }
   }
   operatorCheck = (operator) => {
     switch (operator) {
@@ -43,6 +54,18 @@ export default class App extends Component {
         let result = this.state.resultText.split('')
         result.pop()
         this.setState({ resultText: result.join('') })
+        break;
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        const lastChar = this.state.resultText.split('').pop()
+        if (this.operators.indexOf(lastChar) > 0) return
+        if (this.state.text == '') return
+        this.setState({
+          resultText: this.state.resultText + operator
+        })
+
     }
 
   }
@@ -62,12 +85,12 @@ export default class App extends Component {
           {row}
         </View>)
     }
-    const operators = ['D', '+', '-', '*', '/'];
+
     let operatorBtn = [];
-    for (let i = 0; i < operators.length; i++) {
+    for (let i = 0; i < this.operators.length; i++) {
       operatorBtn.push(
-        <TouchableOpacity onPress={() => this.operatorCheck(operators[i])} style={styles.btn}>
-          <Text style={styles.calculationText} >{operators[i]}</Text>
+        <TouchableOpacity onPress={() => this.operatorCheck(this.operators[i])} style={styles.btn}>
+          <Text style={styles.calculationText} >{this.operators[i]}</Text>
         </TouchableOpacity>)
     }
 
