@@ -89,7 +89,7 @@ export default class App extends Component {
     let operatorBtn = [];
     for (let i = 0; i < this.operators.length; i++) {
       operatorBtn.push(
-        <TouchableOpacity onPress={() => this.operatorCheck(this.operators[i])} style={styles.btn}>
+        <TouchableOpacity onPress={() => this.operatorCheck(this.operators[i])} style={styles.btnOperator}>
           <Text style={styles.calculationText} >{this.operators[i]}</Text>
         </TouchableOpacity>)
     }
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   result: {
     flex: 2,
-    backgroundColor: 'pink',
+    backgroundColor: '#4d4d4d',
     alignItems: 'flex-end',
     paddingHorizontal: 10,
   },
@@ -133,6 +133,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1
   },
+  btnOperator: {
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 0.3,
+    flex: 1
+  },
   resultText: {
     color: 'white',
     fontSize: 30,
@@ -140,7 +147,7 @@ const styles = StyleSheet.create({
   },
   calculation: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#4d4d4d',
     alignItems: 'flex-end',
     paddingHorizontal: 10
   },
@@ -161,11 +168,11 @@ const styles = StyleSheet.create({
   },
   numbers: {
     flex: 3,
-    backgroundColor: 'red',
+    backgroundColor: '#6b6b6b',
   },
   operations: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#ffb901',
     justifyContent: 'space-around',
   }
 });
