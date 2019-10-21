@@ -37,6 +37,15 @@ export default class App extends Component {
   buttonPressed = (text) => {
     this.setState({ resultText: this.state.resultText + text })
   }
+  operatorCheck = (operator) => {
+    switch (operator) {
+      case 'D':
+        let result = this.state.resultText.split('')
+        result.pop()
+        this.setState({ resultText: result.join('') })
+    }
+
+  }
   render() {
     const rows = []
     const nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.', 0, '=']]
@@ -57,7 +66,7 @@ export default class App extends Component {
     let operatorBtn = [];
     for (let i = 0; i < operators.length; i++) {
       operatorBtn.push(
-        <TouchableOpacity onPress={() => this.buttonPressed(operators[i])} style={styles.btn}>
+        <TouchableOpacity onPress={() => this.operatorCheck(operators[i])} style={styles.btn}>
           <Text style={styles.calculationText} >{operators[i]}</Text>
         </TouchableOpacity>)
     }
