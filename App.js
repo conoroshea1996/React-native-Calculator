@@ -31,8 +31,11 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      resultText: ''
+      resultText: '',
     }
+  }
+  buttonPressed = (text) => {
+    this.setState({ resultText: this.state.resultText + text })
   }
   render() {
     const rows = []
@@ -41,7 +44,7 @@ export default class App extends Component {
       let row = []
       for (let j = 0; j < 3; j++) {
         row.push(
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity onPress={() => this.buttonPressed(nums[i][j])} style={styles.btn}>
             <Text style={styles.calculationText}>{nums[i][j]}</Text>
           </TouchableOpacity>)
       }
@@ -50,11 +53,11 @@ export default class App extends Component {
           {row}
         </View>)
     }
-    const operators = ['+', '-', '*', '/'];
+    const operators = ['D', '+', '-', '*', '/'];
     let operatorBtn = [];
     for (let i = 0; i < operators.length; i++) {
       operatorBtn.push(
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity onPress={() => this.buttonPressed(operators[i])} style={styles.btn}>
           <Text style={styles.calculationText} >{operators[i]}</Text>
         </TouchableOpacity>)
     }
@@ -66,7 +69,7 @@ export default class App extends Component {
             <Text style={styles.resultText}>{this.state.resultText}</Text>
           </View>
           <View style={styles.calculation} >
-            <Text style={styles.calculationText}>200 + 200</Text>
+            <Text style={styles.calculationText}>{this.state.calculationText}</Text>
           </View>
           <View style={styles.buttons} >
             <View style={styles.numbers}>
@@ -96,9 +99,6 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 0.2,
-    borderColor: '#BEBEBE',
-    borderBottomWidth: 0,
     flex: 1
   },
   resultText: {
